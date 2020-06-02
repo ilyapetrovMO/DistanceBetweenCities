@@ -41,8 +41,8 @@ namespace DistanceBetweenCities
 
         private static async Task<double> CalculateDistance(string city1, string city2)
         {
-            double[] city1LatLng = await GetLatLngAync(city1);
-            double[] city2LatLng = await GetLatLngAync(city2);
+            double[] city1LatLng = await GetLatLngAsync(city1);
+            double[] city2LatLng = await GetLatLngAsync(city2);
 
             // algorythm and explanation by Chris Veness at: https://www.movable-type.co.uk/scripts/latlong.html
             const double R = 6371e3;
@@ -60,7 +60,7 @@ namespace DistanceBetweenCities
             return result;
         }
 
-        private static async Task<double[]> GetLatLngAync(string city)
+        private static async Task<double[]> GetLatLngAsync(string city)
         {
             string response = await Client.GetStringAsync($"http://open.mapquestapi.com/geocoding/v1/address?key={apiKey}&location={city}");
 
